@@ -53,7 +53,7 @@
                 </div>
                 <div ng-repeat="guess in question.guesses">
                     <strong>{{question.interpretCanonicalAnswer(guess)}}</strong>
-                    <img src="/img/RedX.svg" ng-show="!question.guessIsCorrect(guess)"/>
+                    <img src="./img/RedX.svg" ng-show="!question.guessIsCorrect(guess)"/>
                     <span ng-if="question.guessIsCorrect(guess)">({{question.computePointsEarnedForGuess(guess)}} points)</span>
                 </div>
                 <form ng-submit="question.commitInput()" ng-show="question.hasUnknownSolutions()">
