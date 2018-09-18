@@ -77,6 +77,14 @@ const questionData = {
 };
 
 
+function caseInsensitiveCompare(lhs, rhs) {
+  return _.toUpper(lhs) === _.toUpper(rhs);
+}
+
+function arrayContains(haystack, needle) {
+  return _.some(haystack, (item) => { return item === needle });
+}
+
 
 function QuizSolution(json) {
   this.canonicalName = json.canonicalName;
@@ -116,8 +124,15 @@ QuizQuestion.prototype.commitInput = function() {
     return;
   }
 
-  // Append the guess to the list of guesses, and clear the input.
-  this.guesses.push(guess);
+  // Make sure the current guess doesn't already exist in the array.
+  // Pushing repeat items into the guesses array causes a "dupes" error in Angular.
+  if (!arrayContains(this.guesses, guess)) {
+
+    // Append the guess to the list of guesses
+    this.guesses.push(guess);
+  }
+
+  // clear the input.
   this.input = "";
 };
 
@@ -138,7 +153,7 @@ QuizQuestion.prototype.unknownSolutions = function() {
 };
 
 QuizQuestion.prototype.interpretCanonicalAnswer = function(guess) {
-  const matchingSolution = question.findSolution(guess) || {};
+  const matchingSolution = this.findSolution(guess) || {};
   return matchingSolution.canonicalName || guess;
 };
 
