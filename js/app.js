@@ -165,9 +165,16 @@ QuizQuestion.prototype.hasUnknownSolutions = function() {
 
 const app = angular.module('QuizApp', []);
 
-app.controller('QuizController', [function() {
-  this.questions = questionData.questions.map((questionJSON) => {
-    return new QuizQuestion(questionJSON);
+app.controller('QuizController', ['$http', function($http) {
+
+  this.loadQuestionJSON = function(questionJSON) {
+    this.questions = questionJSON.questions.map((questionJSON) => {
+      return new QuizQuestion(questionJSON);
+    });
+  };
+
+  $http.get('./js/test-quiz.json').then((result) => {
+    this.loadQuestionJSON(result.data);
   });
 
   // Take the question's input, and move it to its guesses.

@@ -13,16 +13,32 @@
     },
     {
       "content": "What are the names of Avery's guinea pigs?",
+      "universalHints": [
+        {
+          "kind": "Name",
+          "message": "They are named after very old cars."
+        }
+      ],
       "solutions": [
         {
           "canonicalName": "Nash",
           "alternatives": [],
-          "hints": []
+          "hints": [
+            {
+              "kind": "Description",
+              "message": "He is blonde."
+            }
+          ]
         },
         {
           "canonicalName": "Edsel",
           "alternatives": [],
-          "hints": []
+          "hints": [
+            {
+              "kind": "Description",
+              "message": "He is multi-colored."
+            }
+          ]
         }
       ]
     },

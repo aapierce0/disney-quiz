@@ -3,28 +3,85 @@
   "questions": [
     {
       "content": "A young girl embarks on a journey of self-discovery, despite parental objections, with a snarky human male companion and an animal friend.",
+      "universalHints": [
+        {
+          "kind": "Plot",
+          "message": "The animal companion cannot speak."
+        },
+        {
+          "kind": "Plot",
+          "message": "Girls feel trapped/limited by their environment."
+        }
+      ],
       "solutions": [
         {
           "canonicalName": "Moana",
           "alternatives": [],
-          "hints": []
+          "hints": [
+            {
+              "kind": "Plot",
+              "message": "There is no love story component (or real villain)."
+            },
+            {
+              "kind": "Casting",
+              "message": "Dwayne \"The Rock\" Johnson and Lin-Manuel Miranda are cast."
+            },
+            {
+              "kind": "Quote",
+              "message": "\"If you wear a dress and have an animal sidekick, you're a princess.\""
+            },
+            {
+              "kind": "Quote",
+              "message": "\"Whatever just happened... blame it on the pig.\""
+            }
+          ]
         },
         {
           "canonicalName": "Tangled",
-          "alternatives": [
-            "Rapunzel"
-          ],
-          "hints": []
+          "alternatives": [],
+          "hints": [
+            {
+              "kind": "Plot",
+              "message": "Protagonist has a close, personal relationship with the antagonist."
+            },
+            {
+              "kind": "Casting",
+              "message": "Mandy Moore, Zachary Levi, Brad Garrett, and Ron Pearlman are cast."
+            },
+            {
+              "kind": "Quote",
+              "message": "\"You want me to be the bad guy? Fine. Now I'm the bad guy.\""
+            }
+          ]
         }
       ]
     },
     {
       "content": "Orphaned sisters learn to cope with their losses and move on with their lives, learning the importance of their bond.",
+      "universalHints": [
+        {
+          "kind": "Plot",
+          "message": "The sisters lost their parents to a storm."
+        }
+      ],
       "solutions": [
         {
           "canonicalName": "Frozen",
           "alternatives": [],
-          "hints": []
+          "hints": [
+            {
+              "kind": "Song",
+              "message": "Movie features a song sung by both the protagonist and antagonist."
+            },
+            {
+              "kind": "Casting",
+              "message": "Kristen Bell, Idina Menzel, and Josh Gad are cast."
+            },
+            {
+              "kind": "Quote",
+              "message": "Wait... you got engaged to someone you just met that day?!"
+            }
+          ]
         },
         {
           "canonicalName": "Lilo & Stitch",
@@ -33,27 +90,86 @@
             "lillo and stitch",
             "lillo & stitch"
           ],
-          "hints": []
+          "hints": [
+            {
+              "kind": "Song",
+              "message": "Movie features songs by a legendary rock singer."
+            },
+            {
+              "kind": "Casting",
+              "message": "Ving Rhames, David Ogden Stiers, and Daveigh Chase are cast."
+            },
+            {
+              "kind": "Quote",
+              "message": "\"Don't worry. She likes your butt and fancy hair. I know. I read her diary.\""
+            }
+          ]
         }
       ]
     },
     {
       "content": "British explorers meet local savage types.",
+      "universalHints": [
+        {
+          "kind": "Plot",
+          "message": "Savage falls in love with one of the explorers."
+        }
+      ],
       "solutions": [
         {
           "canonicalName": "Tarzan",
           "alternatives": [],
-          "hints": []
+          "hints": [
+            {
+              "kind": "Plot",
+              "message": "Titular character adopted as a baby after parents demise."
+            },
+            {
+              "kind": "Casting",
+              "message": "Minnie Driver, Rosie O'Donnell, and Glenn Close are cast."
+            },
+            {
+              "kind": "Quote",
+              "message": "\"Now, you stay away from me. Like a very good wild man.\""
+            },
+            {
+              "kind": "Quote",
+              "message": "\"Mom! Are you sure this water's sanitary? It looks questionable to me!\""
+            }
+          ]
         },
         {
           "canonicalName": "Pocahontas",
           "alternatives": [],
-          "hints": []
+          "hints": [
+            {
+              "kind": "Plot",
+              "message": "A quarrel between two love interests of titular character leads to the death of one."
+            },
+            {
+              "kind": "Casting",
+              "message": "Mel Gibson and Christian Bale are cast."
+            },
+            {
+              "kind": "Quote",
+              "message": "\"Listen with your heart. You will understand.\""
+            }
+          ]
         }
       ]
     },
     {
       "content": "The protagonist and antagonist prove that a person's quality of character does not correlate with their outward apperance.",
+      "universalHints": [
+        {
+          "kind": "Plot",
+          "message": "Events take place in France"
+        },
+        {
+          "kind": "Plot",
+          "message": "Antagonist falls to his death"
+        }
+      ],
       "solutions": [
         {
           "canonicalName": "Beauty and the Beast",
@@ -62,64 +178,254 @@
             "Beauty & the beast",
             "The Beauty & the beast"
           ],
-          "hints": []
+          "hints": [
+            {
+              "kind": "Plot",
+              "message": "Protagonist is dissatifsied with the monotony of every day life."
+            },
+            {
+              "kind": "Casting",
+              "message": "Angela Lansbury, David Ogden Stiers, and Paige O'Hara are cast."
+            },
+            {
+              "kind": "Quote",
+              "message": "\"You must control your temper!\""
+            }
+          ]
         },
         {
           "canonicalName": "Hunchback of Notre Dame",
           "alternatives": [
             "The Hunchback of Notre Dame"
           ],
-          "hints": []
+          "hints": [
+            {
+              "kind": "Plot",
+              "message": "Protagonist grows up isolated from the society he's taught will reject him."
+            },
+            {
+              "kind": "Casting",
+              "message": "Demi Moore, Kevin Kline, and Jason Alexander are cast."
+            },
+            {
+              "kind": "Quote",
+              "message": "\"By the way... great mask.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "content": "Explorers search for an otherwise thought lost/mythical world and fortune.",
+      "universalHints": [
+        {
+          "kind": "Plot",
+          "message": "One or more of the exploration party betrays the original intellectual purpose/intent of the journey."
+        }
+      ],
+      "solutions": [
+        {
+          "canonicalName": "Atlantis: The Lost Empire",
+          "alternatives": ["Atlantis"],
+          "hints": [
+            {
+              "kind": "Plot",
+              "message": "Protagonist is an academic type and the first main character in a Disney movie to wear glasses."
+            },
+            {
+              "kind": "Casting",
+              "message": "Michael J. Fox/Leonard Nemoy/James Garner"
+            },
+            {
+              "kind": "Quote",
+              "message": "\"Hey, look, I made a bridge. It only took me like, what? Ten seconds? Eleven tops.\""
+            }
+          ]
+        },
+        {
+          "canonicalName": "Treasure Planet",
+          "alternatives": [],
+          "hints": [
+            {
+              "kind": "Plot",
+              "message": "Take on a classic novel by Robert Louis Stevenson"
+            },
+            {
+              "kind": "Casting",
+              "message": "Joseph Gordon Levitt/Emma Thompson/David Hyde Pierce"
+            },
+            {
+              "kind": "Quote",
+              "message": "\"When the time comes you get the chance to really test the cut of your sails and show what you're made of, well, I hope I'm there catching some of the light coming off you that day\""
+            }
+          ]
         }
       ]
     },
     {
       "content": "A social outcast with a heart of gold proves himself in the eyes of a higher authority, falling in love along the way.",
+      "universalHints": [
+        {
+          "kind": "Plot",
+          "message": "The protagonist has a flying mode of transportation."
+        }
+      ],
       "solutions": [
         {
           "canonicalName": "Hercules",
           "alternatives": [],
-          "hints": []
+          "hints": [
+            {
+              "kind": "Plot",
+              "message": "Main character learns early on he is adopted and searches for his birth parents."
+            },
+            {
+              "kind": "Casting",
+              "message": "James Woods, Danny Devito, and Rip Torn are cast."
+            },
+            {
+              "kind": "Quote",
+              "message": "\"Will you forget the head slicing thing?!\""
+            }
+          ]
         },
         {
           "canonicalName": "Aladdin",
           "alternatives": [],
-          "hints": []
+          "hints": [
+            {
+              "kind": "Plot",
+              "message": "The second time the titular character meets his love interest it is under false pretenses."
+            },
+            {
+              "kind": "Casting",
+              "message": "Gilbert Gottfreid and Robin Williams are cast."
+            },
+            {
+              "kind": "Quote",
+              "message": "\"Enough about you, Casanova. Talk about her. She's smart. Fun. The hair. The eyes. Anything. Pick a feature!\""
+            }
+          ]
         }
       ]
     },
     {
       "content": "A girl who defies culturally accepted norms disguises her true identity for the sake of a man in her life.",
+      "universalHints": [
+        {
+          "kind": "Plot",
+          "message": "The girl puts her life at risk by disguising herself."
+        },
+        {
+          "kind": "Plot",
+          "message": "Sassy, red animal sidekick"
+        }
+      ],
       "solutions": [
         {
           "canonicalName": "The Little Mermaid",
           "alternatives": [],
-          "hints": []
+          "hints": [
+            {
+              "kind": "Plot",
+              "message": "Disguises identity through magical means."
+            },
+            {
+              "kind": "Casting",
+              "message": "Jodi Benson"
+            },
+            {
+              "kind": "Quote",
+              "message": "\"Don't underestimate the importance of body language!\""
+            }
+          ]
         },
         {
           "canonicalName": "Mulan",
           "alternatives": [],
-          "hints": []
+          "hints": [
+            {
+              "kind": "Plot",
+              "message": "Companion has self motivations for helping the main character."
+            },
+            {
+              "kind": "Casting",
+              "message": "B.D. Wong/Pat Morita/George Takei"
+            },
+            {
+              "kind": "Quote",
+              "message": "The flower that blooms in adversity is the most rare and beautiful of them all."
+            }
+          ]
         }
       ]
     },
     {
       "content": "A selfish man is turned into an animal and then humbled by the experience.",
+      "universalHints": [
+        {
+          "kind": "Plot",
+          "message": "Person changed is a man of royalty."
+        },
+        {
+          "kind": "Plot",
+          "message": "Man chooses to remain the animal he becomes."
+        }
+      ],
       "solutions": [
         {
           "canonicalName": "Princess and the Frog",
           "alternatives": [],
-          "hints": []
+          "hints": [
+            {
+              "kind": "Plot",
+              "message": "The female protagonist is an aspiring entreprenuer."
+            },
+            {
+              "kind": "Casting",
+              "message": "John Goodman/Keith David/Jennifer Lewis"
+            },
+            {
+              "kind": "Quote",
+              "message": "\"I don't have time for dancing. That's just gonna have to wait awhile.\""
+            }
+          ]
         },
         {
           "canonicalName": "Emperor's New Groove",
           "alternatives": [],
-          "hints": []
+          "hints": [
+            {
+              "kind": "Plot",
+              "message": "Antagonist has a perpetually cheerful, yet slightly dimwitted henchperson."
+            },
+            {
+              "kind": "Casting",
+              "message": "John Goodman/David Spade/Patrick Warburton"
+            },
+            {
+              "kind": "Quote",
+              "message": "\"Oh, he's doing his own theme music? Big, dumb, and tone deaf. I am so glad I was unconscious for all of this.\""
+            }
+          ]
         },
         {
           "canonicalName": "Brother Bear",
           "alternatives": [],
-          "hints": []
+          "hints": [
+            {
+              "kind": "Plot",
+              "message": "Man is turned into the kind of animal he kills"
+            },
+            {
+              "kind": "Casting",
+              "message": "Joaquin Phoenix/Rick Moranis"
+            },
+            {
+              "kind": "Quote",
+              "message": "\"When I get in a fight, I go all crazy and I'm a raging ball of brown fur!\""
+            }
+          ]
         }
       ]
     }
