@@ -117,6 +117,10 @@ QuizQuestion.prototype.findSolution = function(guess) {
   });
 };
 
+QuizQuestion.prototype.guessIsCorrect = function(guess) {
+  return this.findSolution(guess) !== undefined;
+};
+
 QuizQuestion.prototype.commitInput = function() {
   const guess = this.input;
 
@@ -179,8 +183,47 @@ QuizQuestion.prototype.showsUniversalHintsSection = function() {
   return (this.universalHints || []).length > 0
 };
 
-QuizQuestion.prototype.numberOfHintsRemaining = function() {
+QuizQuestion.prototype.hintPenaltyForSolution = function(solution) {
+  // Subtract 1 point for each univeral hint that's shown
+  const univeralHintPenalty = this.universalHints.filter((hint) => { return hint.isShown; }).length;
 
+  // Subtract 1 point for each individual hint that's shown
+  const individualHintPenalty = solution.hints.filter((hint) => { return hint.isShown; }).length;
+
+  return univeralHintPenalty + individualHintPenalty;
+};
+
+QuizQuestion.prototype.computePointsEarnedForSolution = function(solution) {
+
+  // Each solution is worth 5 points, -1 for each hint taken.
+  const baseValue = 5;
+
+  // If this solution isn't found, award 0 points.
+  if (!this.didSolveSolution(solution)) { return 0; }
+
+  const totalPenalty = this.hintPenaltyForSolution(solution);
+  return Math.max(baseValue - totalPenalty, 0);
+};
+
+QuizQuestion.prototype.computePointsEarnedForGuess = function(guess) {
+  const solution = this.findSolution(guess);
+  if (solution) {
+    return this.computePointsEarnedForSolution(solution);
+  } else {
+    return 0;
+  }
+};
+
+QuizQuestion.prototype.computeTotalPointsEarned = function() {
+
+  const scores = this.solutions.map((solution) => {
+    return this.computePointsEarnedForSolution(solution);
+  });
+
+  console.log(scores);
+
+  // Sum the scores up
+  return _.sum(scores);
 };
 
 
@@ -202,11 +245,6 @@ app.controller('QuizController', ['$http', function($http) {
   // Take the question's input, and move it to its guesses.
   this.commitQuestionInput = function(question) {
     question.commitInput();
-  };
-
-  // Evaluate one of the question's guesses
-  this.evaluateAnswer = function(question, guess) {
-    return question.findSolution(guess) !== undefined;
   };
 
   this.guessIsValidForSolution = function(guess, solution) {

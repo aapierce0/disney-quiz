@@ -17,7 +17,7 @@
         <header><h1>Hello World</h1></header>
         <div class="quiz-body">
             <div>
-                Each prompt describes two or three Disney movies. You get as many guesses as you want!
+                Each prompt describes two or three Disney movies. Each answer is worth 5 points, but you lose a point every time you take a hint. You get as many guesses as you want!
             </div>
 
             <div class="question" ng-repeat="question in quiz.questions">
@@ -52,13 +52,15 @@
                     </div>
                 </div>
                 <div ng-repeat="guess in question.guesses">
-                    {{question.interpretCanonicalAnswer(guess)}}
-                    <img src="/img/RedX.svg" ng-show="!quiz.evaluateAnswer(question, guess)"/>
+                    <strong>{{question.interpretCanonicalAnswer(guess)}}</strong>
+                    <img src="/img/RedX.svg" ng-show="!question.guessIsCorrect(guess)"/>
+                    <span ng-if="question.guessIsCorrect(guess)">({{question.computePointsEarnedForGuess(guess)}} points)</span>
                 </div>
                 <form ng-submit="question.commitInput()" ng-show="question.hasUnknownSolutions()">
                     <input ng-model="question.input" type="text" />
                     <input type="submit" />
                 </form>
+                <p>Score: {{question.computeTotalPointsEarned()}}</p>
             </div>
         </div>
     </div>
