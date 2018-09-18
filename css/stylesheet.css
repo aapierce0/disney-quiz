@@ -57,11 +57,30 @@ h3 {
 .question .number-of-answers .count {
     font-weight: bold
 }
-.question .number-of-competitor-guesses {
-    color: #484848;
-    opacity: 0.8;
-    font-style: italic
+
+.hint-box {
+    border: solid 1px #EEE;
+    border-radius: 2px;
+    background-color: #FFF;
+    font-size: 0.8em;
+    padding: 0.6em 0.8em;
 }
-.question .number-of-competitor-guesses .count {
-    font-weight: bold
+
+.hint-box .hint-section {
+    margin: 0.4em 0;
+}
+
+.hint-box .hint-section.solved {
+    text-decoration: line-through;
+    color: #AAA;
+}
+
+.hint-box li {
+    list-style: none;
+    font-size: 0.8em;
+    margin: 0.2em 0;
+}
+
+.hint-box li button {
+    padding: 0.2em;
 }

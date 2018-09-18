@@ -16,11 +16,41 @@
     <div class="quiz" ng-controller="QuizController as quiz">
         <header><h1>Hello World</h1></header>
         <div class="quiz-body">
+            <div>
+                Each prompt describes two or three Disney movies. You get as many guesses as you want!
+            </div>
+
             <div class="question" ng-repeat="question in quiz.questions">
                 <h1>Question {{$index+1}}:</h1>
                 <p class="content">{{question.content}}</p>
                 <p class="number-of-answers"><span class="count">{{question.solutions.length}}</span> {{question.solutions.length === 1 ? "answer" : "answers"}}.</p>
-
+                <div class="hint-box" ng-show="question.totalNumberOfHints() > 0">
+                    <div class="hint-section" ng-show="question.showsUniversalHintsSection()" ng-class="{'solved':question.didSolveAllSolutions()}">
+                        <p ng-if="question.solutions.length === 2">Hints that apply to <strong>both solutions</strong>:</p>
+                        <p ng-if="question.solutions.length > 2">Hints that apply to <strong>all solutions</strong>:</p>
+                        <ul>
+                            <li ng-repeat="hint in question.universalHints">
+                                <button ng-hide="hint.isShown || question.didSolveAllSolutions()" ng-click="hint.isShown = true;">Show {{hint.kind}} Hint.</button>
+                                <span ng-show="hint.isShown || question.didSolveAllSolutions()">{{hint.message}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hint-section" ng-repeat="solution in question.solutions" ng-class="{'solved':question.didSolveSolution(solution)}" >
+                        <div ng-if="solution.hints.length > 0">
+                            <p ng-if="!question.didSolveSolution(solution)">Hints that apply to <strong>solution {{$index + 1}}</strong>:</p>
+                            <p ng-if="question.didSolveSolution(solution)">Hints that apply to <strong>{{solution.canonicalName}}</strong>:</p>
+                            <ul>
+                                <li ng-repeat="hint in solution.hints">
+                                    <button ng-hide="hint.isShown || question.didSolveSolution(solution)" ng-click="hint.isShown = true;">Show {{hint.kind}} Hint.</button>
+                                    <span ng-show="hint.isShown || question.didSolveSolution(solution)">{{hint.message}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div ng-if="solution.hints.length === 0">
+                            <p>Solution {{$index}} has no hints.</p>
+                        </div>
+                    </div>
+                </div>
                 <div ng-repeat="guess in question.guesses">
                     {{question.interpretCanonicalAnswer(guess)}}
                     <img src="/img/RedX.svg" ng-show="!quiz.evaluateAnswer(question, guess)"/>

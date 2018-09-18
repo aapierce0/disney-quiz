@@ -101,6 +101,7 @@ QuizSolution.prototype.matches = function(guess) {
 function QuizQuestion(json) {
   this.content = json.content;
   this.solutions = json.solutions.map((solution) => { return new QuizSolution(solution) });
+  this.universalHints = json.universalHints;
 
   // bound to the input text field of the question
   this.input = "";
@@ -136,19 +137,21 @@ QuizQuestion.prototype.commitInput = function() {
   this.input = "";
 };
 
+QuizQuestion.prototype.didSolveSolution = function(solution) {
+  return _.some(this.guesses, (guess) => {
+    return solution.matches(guess);
+  })
+};
+
 QuizQuestion.prototype.knownSolutions = function() {
   return _.filter(this.solutions, (solution) => {
-    return _.some(this.guesses, (guess) => {
-      return solution.matches(guess);
-    })
+    return this.didSolveSolution(solution);
   });
 };
 
 QuizQuestion.prototype.unknownSolutions = function() {
   return _.reject(this.solutions, (solution) => {
-    return _.some(this.guesses, (guess) => {
-      return solution.matches(guess);
-    })
+    return this.didSolveSolution(solution);
   });
 };
 
@@ -159,6 +162,25 @@ QuizQuestion.prototype.interpretCanonicalAnswer = function(guess) {
 
 QuizQuestion.prototype.hasUnknownSolutions = function() {
   return this.unknownSolutions().length > 0;
+};
+
+QuizQuestion.prototype.didSolveAllSolutions = function() {
+  return this.unknownSolutions().length === 0;
+};
+
+QuizQuestion.prototype.totalNumberOfHints = function() {
+  // Get the universal hints
+  const universalHints = this.universalHints || [];
+  const individualSolutionHints = _.flatMap(this.solutions, (solution) => { return solution.hints || [] });
+  return universalHints.length + individualSolutionHints.length;
+};
+
+QuizQuestion.prototype.showsUniversalHintsSection = function() {
+  return (this.universalHints || []).length > 0
+};
+
+QuizQuestion.prototype.numberOfHintsRemaining = function() {
+
 };
 
 
@@ -173,7 +195,7 @@ app.controller('QuizController', ['$http', function($http) {
     });
   };
 
-  $http.get('./js/test-quiz.json').then((result) => {
+  $http.get('./js/disney-quiz.json').then((result) => {
     this.loadQuestionJSON(result.data);
   });
 
