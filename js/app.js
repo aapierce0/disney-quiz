@@ -220,8 +220,6 @@ QuizQuestion.prototype.computeTotalPointsEarned = function() {
     return this.computePointsEarnedForSolution(solution);
   });
 
-  console.log(scores);
-
   // Sum the scores up
   return _.sum(scores);
 };
