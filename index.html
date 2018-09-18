@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="QuizApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/stylesheet.css" />
+
+    <title>Disney Quiz</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js" integrity="sha256-/GKyJ0BQJD8c8UYgf7ziBrs/QgcikS7Fv/SaArgBcEI=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="/js/app.js"></script>
+</head>
+
+<body>
+    <div class="quiz" ng-controller="QuizController as quiz">
+        <header><h1>Hello World</h1></header>
+        <div class="quiz-body">
+            <div class="question" ng-repeat="question in quiz.questions">
+                <h1>Question {{$index+1}}:</h1>
+                <p class="content">{{question.content}}</p>
+                <p class="number-of-answers"><span class="count">{{question.solutions.length}}</span> {{question.solutions.length === 1 ? "answer" : "answers"}}.</p>
+
+                <div ng-repeat="guess in question.guesses">
+                    {{question.interpretCanonicalAnswer(guess)}}
+                    <img src="/img/RedX.svg" ng-show="!quiz.evaluateAnswer(question, guess)"/>
+                </div>
+                <form ng-submit="question.commitInput()" ng-show="question.hasUnknownSolutions()">
+                    <input ng-model="question.input" type="text" />
+                    <input type="submit" />
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

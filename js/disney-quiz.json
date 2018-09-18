@@ -1,0 +1,127 @@
+{
+  "title": "Disney Quiz",
+  "questions": [
+    {
+      "content": "A young girl embarks on a journey of self-discovery, despite parental objections, with a snarky human male companion and an animal friend.",
+      "solutions": [
+        {
+          "canonicalName": "Moana",
+          "alternatives": [],
+          "hints": []
+        },
+        {
+          "canonicalName": "Tangled",
+          "alternatives": [
+            "Rapunzel"
+          ],
+          "hints": []
+        }
+      ]
+    },
+    {
+      "content": "Orphaned sisters learn to cope with their losses and move on with their lives, learning the importance of their bond.",
+      "solutions": [
+        {
+          "canonicalName": "Frozen",
+          "alternatives": [],
+          "hints": []
+        },
+        {
+          "canonicalName": "Lilo & Stitch",
+          "alternatives": [
+            "Lilo and stitch",
+            "lillo and stitch",
+            "lillo & stitch"
+          ],
+          "hints": []
+        }
+      ]
+    },
+    {
+      "content": "British explorers meet local savage types.",
+      "solutions": [
+        {
+          "canonicalName": "Tarzan",
+          "alternatives": [],
+          "hints": []
+        },
+        {
+          "canonicalName": "Pocahontas",
+          "alternatives": [],
+          "hints": []
+        }
+      ]
+    },
+    {
+      "content": "The protagonist and antagonist prove that a person's quality of character does not correlate with their outward apperance.",
+      "solutions": [
+        {
+          "canonicalName": "Beauty and the Beast",
+          "alternatives": [
+            "The Beauty and the Beast",
+            "Beauty & the beast",
+            "The Beauty & the beast"
+          ],
+          "hints": []
+        },
+        {
+          "canonicalName": "Hunchback of Notre Dame",
+          "alternatives": [
+            "The Hunchback of Notre Dame"
+          ],
+          "hints": []
+        }
+      ]
+    },
+    {
+      "content": "A social outcast with a heart of gold proves himself in the eyes of a higher authority, falling in love along the way.",
+      "solutions": [
+        {
+          "canonicalName": "Hercules",
+          "alternatives": [],
+          "hints": []
+        },
+        {
+          "canonicalName": "Aladdin",
+          "alternatives": [],
+          "hints": []
+        }
+      ]
+    },
+    {
+      "content": "A girl who defies culturally accepted norms disguises her true identity for the sake of a man in her life.",
+      "solutions": [
+        {
+          "canonicalName": "The Little Mermaid",
+          "alternatives": [],
+          "hints": []
+        },
+        {
+          "canonicalName": "Mulan",
+          "alternatives": [],
+          "hints": []
+        }
+      ]
+    },
+    {
+      "content": "A selfish man is turned into an animal and then humbled by the experience.",
+      "solutions": [
+        {
+          "canonicalName": "Princess and the Frog",
+          "alternatives": [],
+          "hints": []
+        },
+        {
+          "canonicalName": "Emperor's New Groove",
+          "alternatives": [],
+          "hints": []
+        },
+        {
+          "canonicalName": "Brother Bear",
+          "alternatives": [],
+          "hints": []
+        }
+      ]
+    }
+  ]
+}

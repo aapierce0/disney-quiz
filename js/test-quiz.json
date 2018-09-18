@@ -1,0 +1,76 @@
+{
+  "title": "Test Quiz",
+  "questions": [
+    {
+      "content": "Who designed the original Diney Quiz? (First name)",
+      "solutions": [
+        {
+          "canonicalName": "Bailey",
+          "alternatives": [],
+          "hints": []
+        }
+      ]
+    },
+    {
+      "content": "What are the names of Avery's guinea pigs?",
+      "solutions": [
+        {
+          "canonicalName": "Nash",
+          "alternatives": [],
+          "hints": []
+        },
+        {
+          "canonicalName": "Edsel",
+          "alternatives": [],
+          "hints": []
+        }
+      ]
+    },
+    {
+      "content": "What towns/cities has Bailey lived in?",
+      "solutions": [
+        {
+          "canonicalName": "Elgin",
+          "alternatives": [],
+          "hints": []
+        },
+        {
+          "canonicalName": "Morris",
+          "alternatives": [],
+          "hints": []
+        },
+        {
+          "canonicalName": "Schaumburg",
+          "alternatives": [],
+          "hints": []
+        },
+        {
+          "canonicalName": "Springfield",
+          "alternatives": [],
+          "hints": []
+        }
+      ]
+    },
+    {
+      "content": "What towns/cities has Avery lived in?",
+      "solutions": [
+        {
+          "canonicalName": "Elgin",
+          "alternatives": [],
+          "hints": []
+        },
+        {
+          "canonicalName": "Milwaukee",
+          "alternatives": [],
+          "hints": []
+        },
+        {
+          "canonicalName": "La Crosse"
+        },
+        {
+          "canonicalName": "Mystic"
+        }
+      ]
+    }
+  ]
+}
