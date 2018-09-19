@@ -98,6 +98,23 @@ QuizSolution.prototype.matches = function(guess) {
   return (_.some(allowedResponses, (allowedResponse) => { return caseInsensitiveCompare(allowedResponse, guess) }));
 };
 
+
+function QuizAction(type) {
+  this.type = type;
+}
+
+QuizAction.guess = function(guessedString) {
+  let action = new QuizAction("guess");
+  action.guess = guessedString;
+  return action;
+};
+
+QuizAction.hint = function(hint) {
+  let action = new QuizAction("hint");
+  action.hint = hint;
+  return action;
+};
+
 function QuizQuestion(json) {
   this.content = json.content;
   this.solutions = json.solutions.map((solution) => { return new QuizSolution(solution) });
@@ -106,9 +123,14 @@ function QuizQuestion(json) {
   // bound to the input text field of the question
   this.input = "";
 
-  // list of guesses (strings) input by the user
-  this.guesses = [];
+  // list of actions (including guesses) from the user.
+  this.actions = [];
 }
+
+QuizQuestion.prototype.guesses = function() {
+  const guessActions = _.filter(this.actions, (action) => { return action.type === "guess"});
+  return _.map(guessActions, (action) => { return action.guess });
+};
 
 /// Returns the matching solution for a given guess
 QuizQuestion.prototype.findSolution = function(guess) {
@@ -131,10 +153,11 @@ QuizQuestion.prototype.commitInput = function() {
 
   // Make sure the current guess doesn't already exist in the array.
   // Pushing repeat items into the guesses array causes a "dupes" error in Angular.
-  if (!arrayContains(this.guesses, guess)) {
+  if (!arrayContains(this.guesses(), guess)) {
 
     // Append the guess to the list of guesses
-    this.guesses.push(guess);
+    const guessAction = QuizAction.guess(guess);
+    this.actions.push(guessAction);
   }
 
   // clear the input.
@@ -142,7 +165,7 @@ QuizQuestion.prototype.commitInput = function() {
 };
 
 QuizQuestion.prototype.didSolveSolution = function(solution) {
-  return _.some(this.guesses, (guess) => {
+  return _.some(this.guesses(), (guess) => {
     return solution.matches(guess);
   })
 };
@@ -183,25 +206,66 @@ QuizQuestion.prototype.showsUniversalHintsSection = function() {
   return (this.universalHints || []).length > 0
 };
 
-QuizQuestion.prototype.hintPenaltyForSolution = function(solution) {
-  // Subtract 1 point for each univeral hint that's shown
-  const univeralHintPenalty = this.universalHints.filter((hint) => { return hint.isShown; }).length;
+QuizQuestion.prototype.totalPenaltyForSolution = function(solution) {
 
-  // Subtract 1 point for each individual hint that's shown
-  const individualHintPenalty = solution.hints.filter((hint) => { return hint.isShown; }).length;
+  // Gather up all the actions that were taken before the answer was found.
+  const actionsBeforeCorrectAnswer = _.takeWhile(this.actions, (action) => {
 
-  return univeralHintPenalty + individualHintPenalty;
+    // Keep taking unless this is a guess, and the guess matches the solution
+    return !(action.type === 'guess' && solution.matches(action.guess));
+  });
+
+  // Assign a penalty value for each action.
+  const actionPenalties = _.map(actionsBeforeCorrectAnswer, (action) => {
+    if (action.type === 'guess') {
+
+      // Make sure that this guess is wrong for BOTH answers, not just this one.
+      // it's possible that this guess was the correct answer for a different solution.
+      if (this.guessIsCorrect(action.guess)) {
+
+        // This is a correct answer. No penalty.
+        return 0;
+      } else {
+
+        // Incorrect answer. -1 point.
+        return 1;
+      }
+
+    } else if (action.type === 'hint') {
+
+      // Don't penalize the user if this hint was for a different solution.
+      const hintAppliesToThisSolution = _.some(solution.hints, (hint) => { return _.isEqual(hint, action.hint) });
+      const hintIsUniversal = _.some(this.universalHints, (hint) => { return _.isEqual(hint, action.hint) });
+      if (hintAppliesToThisSolution || hintIsUniversal) {
+
+        // This hint was used for this solution.
+        return 2;
+      } else {
+
+        // This hint did not apply to this solution.
+        return 0;
+      }
+
+    } else {
+      return 0;
+    }
+  });
+
+  console.log(actionPenalties);
+
+  // Return the sum of all penalties.
+  return _.sum(actionPenalties);
 };
 
 QuizQuestion.prototype.computePointsEarnedForSolution = function(solution) {
 
   // Each solution is worth 5 points, -1 for each hint taken.
-  const baseValue = 5;
+  const baseValue = 10;
 
   // If this solution isn't found, award 0 points.
   if (!this.didSolveSolution(solution)) { return 0; }
 
-  const totalPenalty = this.hintPenaltyForSolution(solution);
+  const totalPenalty = this.totalPenaltyForSolution(solution);
   return Math.max(baseValue - totalPenalty, 0);
 };
 
@@ -224,7 +288,11 @@ QuizQuestion.prototype.computeTotalPointsEarned = function() {
   return _.sum(scores);
 };
 
-
+QuizQuestion.prototype.showHint = function(hint) {
+  hint.isShown = true;
+  const hintAction = QuizAction.hint(hint);
+  this.actions.push(hintAction);
+};
 
 const app = angular.module('QuizApp', []);
 
